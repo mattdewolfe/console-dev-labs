@@ -1,0 +1,12 @@
+c:\users\mdewolfe\documents\visual studio 2012\Projects\ConsoleLab3\ConsoleLab3\bin\Debug\ConsoleLab3.exe.config
+c:\users\mdewolfe\documents\visual studio 2012\Projects\ConsoleLab3\ConsoleLab3\obj\Debug\ConsoleLab3.csprojResolveAssemblyReference.cache
+c:\users\mdewolfe\documents\visual studio 2012\Projects\ConsoleLab3\ConsoleLab3\bin\Debug\ConsoleLab3.exe
+c:\users\mdewolfe\documents\visual studio 2012\Projects\ConsoleLab3\ConsoleLab3\bin\Debug\ConsoleLab3.pdb
+c:\users\mdewolfe\documents\visual studio 2012\Projects\ConsoleLab3\ConsoleLab3\obj\Debug\ConsoleLab3.exe
+c:\users\mdewolfe\documents\visual studio 2012\Projects\ConsoleLab3\ConsoleLab3\obj\Debug\ConsoleLab3.pdb
+C:\Users\mdewolfe\Desktop\ConsoleLab3\ConsoleLab3\bin\Debug\ConsoleLab3.exe.config
+C:\Users\mdewolfe\Desktop\ConsoleLab3\ConsoleLab3\obj\Debug\ConsoleLab3.exe
+C:\Users\mdewolfe\Desktop\ConsoleLab3\ConsoleLab3\obj\Debug\ConsoleLab3.pdb
+C:\Users\mdewolfe\Desktop\ConsoleLab3\ConsoleLab3\bin\Debug\ConsoleLab3.exe
+C:\Users\mdewolfe\Desktop\ConsoleLab3\ConsoleLab3\bin\Debug\ConsoleLab3.pdb
+C:\Users\mdewolfe\Desktop\ConsoleLab3\ConsoleLab3\obj\Debug\ConsoleLab3.csprojResolveAssemblyReference.cache
