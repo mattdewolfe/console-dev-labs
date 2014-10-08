@@ -11,10 +11,14 @@ namespace VehicleLab5
         private float[] gearRatios;
         private int currentGear;
         private int numGears;
-
-        public Transmission(int _numGears) :
+        public float force;
+        private Engine engine;
+        
+        // Requires an engine to be attached to
+        public Transmission(Engine _engine, int _numGears = 2) :
             base ("Transmission", false)
         {
+            engine = _engine;
             numGears = _numGears;
             currentGear = 0;
             gearRatios = new float[numGears];
@@ -26,7 +30,7 @@ namespace VehicleLab5
         }
         public override void Update()
         {
-
+            force = (gearRatios[currentGear] * engine.GetTorque());
         }
         // Get the ratio of the current gear
         public float GetRatio()

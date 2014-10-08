@@ -31,7 +31,7 @@ namespace VehicleLab5
         {
             Console.WriteLine(" Press 1 to select the Car.");
             Console.WriteLine(" Press 2 to select the Boat.");
-            Console.WriteLine(" Press 3 to select the Rock.");
+            Console.WriteLine(" Press 3 to select the Jet.");
         }
         public void RunGame()
         {
@@ -70,9 +70,12 @@ namespace VehicleLab5
             {"   _", 
              "  /t\\___",
              " (o_|__o)"};
-            car.AddComponent(new Chassis(500, "Steel"));
-            car.AddComponent(new Engine(250));
-            car.AddComponent(new Transmission(5));
+            car.AddComponent(new Chassis("Steel"));
+            // Create engine to add to car, and keep refernce to it to pass to transmission
+            Engine carEng = new Engine(250);
+            car.AddComponent(carEng);
+            car.AddComponent(new Transmission(carEng, 5));
+            car.AddComponent(new PhysicsBody(1000));
             car.AddComponent(new Sprite(sprite, 0, 0));
             entities.Add(car);
         }
@@ -83,8 +86,9 @@ namespace VehicleLab5
             {"  ++", 
              " /_#\\___",
              " \\_____/"};
-            boat.AddComponent(new Chassis(240, "Fiberglass"));
+            boat.AddComponent(new Chassis("Fiberglass"));
             boat.AddComponent(new Engine(75));
+            boat.AddComponent(new PhysicsBody(400));
             boat.AddComponent(new Sprite(sprite, 0, 10));
             entities.Add(boat);
         }
@@ -95,8 +99,9 @@ namespace VehicleLab5
             {"\\\\", 
              "->===//==\\",
              "   -//"};
-            jet.AddComponent(new Chassis(640, "Aluminum"));
+            jet.AddComponent(new Chassis("Aluminum"));
             jet.AddComponent(new Engine(750));
+            jet.AddComponent(new PhysicsBody(1200));
             jet.AddComponent(new Sprite(sprite, 0, 20));
             entities.Add(jet);
         }

@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace VehicleLab5
 {
+    // Base entity class for components to be added to
     class Entity
     {
+        
         public int ID;
         public string name;
+        public vec3 transform;
 
         public List<Component> components;
 

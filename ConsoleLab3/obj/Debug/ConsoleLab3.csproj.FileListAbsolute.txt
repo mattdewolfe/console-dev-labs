@@ -10,3 +10,6 @@ C:\Users\mdewolfe\Desktop\ConsoleLab3\ConsoleLab3\obj\Debug\ConsoleLab3.pdb
 C:\Users\mdewolfe\Desktop\ConsoleLab3\ConsoleLab3\bin\Debug\ConsoleLab3.exe
 C:\Users\mdewolfe\Desktop\ConsoleLab3\ConsoleLab3\bin\Debug\ConsoleLab3.pdb
 C:\Users\mdewolfe\Desktop\ConsoleLab3\ConsoleLab3\obj\Debug\ConsoleLab3.csprojResolveAssemblyReference.cache
+H:\console-dev-labs\ConsoleLab3\bin\Debug\ConsoleLab3.exe.config
+H:\console-dev-labs\ConsoleLab3\obj\Debug\ConsoleLab3.exe
+H:\console-dev-labs\ConsoleLab3\obj\Debug\ConsoleLab3.pdb

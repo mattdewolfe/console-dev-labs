@@ -1,0 +1,6 @@
+H:\console-dev-labs\Week6Work\bin\Debug\Week6Work.exe.config
+H:\console-dev-labs\Week6Work\bin\Debug\Week6Work.exe
+H:\console-dev-labs\Week6Work\bin\Debug\Week6Work.pdb
+H:\console-dev-labs\Week6Work\obj\Debug\Week6Work.csprojResolveAssemblyReference.cache
+H:\console-dev-labs\Week6Work\obj\Debug\Week6Work.exe
+H:\console-dev-labs\Week6Work\obj\Debug\Week6Work.pdb
