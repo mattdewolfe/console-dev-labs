@@ -28,8 +28,11 @@ namespace Week6Work
     class WorldEngine
     {
         public delegate void CreateCallback(System.Object _obj, int _timeCreated);
+
         public enum ObjectTypes { eOT_Airplane = 0, eOT_Axe };
+
         public WorldEngine() { }
+
         public void CreateObject(ObjectTypes type, CreateCallback cb)
         {
             switch (type)
@@ -41,6 +44,7 @@ namespace Week6Work
                 case ObjectTypes.eOT_Axe:
                     Axe x = new Axe();
                     cb(x, 5);
+                    
                     break;
                 default:
                     break;
@@ -56,6 +60,7 @@ namespace Week6Work
             WorldEngine engine = new WorldEngine();
             engine.CreateObject(WorldEngine.ObjectTypes.eOT_Airplane, Airplane.OnCreate);
             engine.CreateObject(WorldEngine.ObjectTypes.eOT_Axe, Axe.OnCreate);
+            Delegates del = new Delegates();
         }
     }
     class Delegates
@@ -67,9 +72,11 @@ namespace Week6Work
         // Standard int we will update with our delegate 
         public int allies;
 
-        Delegates()
+        public Delegates()
         {
             allies = allyRecount(0);
+            allies += allyRecount(2);
+            allies -= allyRecount(3);
         }
         // Calling a function that uses the delegate to update a value
         void Update(int val)

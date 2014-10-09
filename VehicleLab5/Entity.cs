@@ -54,5 +54,24 @@ namespace VehicleLab5
             // If we clear loop without returning then add this component to the list
             components.Add(_comp);
         }
+        // This is a hack
+        public void Move()
+        {
+            // Get length of list
+            int length = components.Count;
+            if (length > 0)
+            {
+                // Check for a matching component within the list
+                for (int i = 0; i < length; i++)
+                {
+                    // If a match is found - based on name
+                    if (components[i].name == "Sprite")
+                    {
+                        Sprite temp = (Sprite)components[i];
+                        temp.x += 1;
+                    }
+                }
+            }
+        }
     }
 }

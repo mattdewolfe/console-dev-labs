@@ -34,6 +34,10 @@ namespace VehicleLab5
             // Offset by x and y
             for (int i = 0; i < tempCount; i++)
             {
+                for (int j = 0; j < x; j++)
+                {
+                    Console.Write(" ");
+                }
                 Console.Write(image[i]);
                 Console.Write("\n");
             }
