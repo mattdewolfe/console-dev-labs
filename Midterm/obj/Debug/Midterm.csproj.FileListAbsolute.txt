@@ -1,0 +1,5 @@
+H:\console-dev-labs\Midterm\bin\Debug\Midterm.exe.config
+H:\console-dev-labs\Midterm\bin\Debug\Midterm.exe
+H:\console-dev-labs\Midterm\bin\Debug\Midterm.pdb
+H:\console-dev-labs\Midterm\obj\Debug\Midterm.exe
+H:\console-dev-labs\Midterm\obj\Debug\Midterm.pdb
