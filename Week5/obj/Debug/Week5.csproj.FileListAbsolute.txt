@@ -1,6 +1,0 @@
-C:\Users\mdewolfe\Desktop\ConsoleLab3\Week5\bin\Debug\Week5.exe.config
-C:\Users\mdewolfe\Desktop\ConsoleLab3\Week5\bin\Debug\Week5.exe
-C:\Users\mdewolfe\Desktop\ConsoleLab3\Week5\bin\Debug\Week5.pdb
-C:\Users\mdewolfe\Desktop\ConsoleLab3\Week5\obj\Debug\Week5.csprojResolveAssemblyReference.cache
-C:\Users\mdewolfe\Desktop\ConsoleLab3\Week5\obj\Debug\Week5.exe
-C:\Users\mdewolfe\Desktop\ConsoleLab3\Week5\obj\Debug\Week5.pdb
