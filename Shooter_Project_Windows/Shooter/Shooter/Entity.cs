@@ -20,9 +20,13 @@ namespace Shooter
         public Entity() { }
 
         public virtual void Init(Animation _animation, Vector2 _position) { }
-        public virtual void OnHit(Entity _ent)
+        public virtual void OnHit(Entity _ent) 
         {
-
+            Health -= _ent.Damage;
+        }
+        public virtual void OnHit(Projectile _proj) 
+        {
+            Health -= _proj.Damage;
         }
 
         public void Draw(SpriteBatch _spriteSheet)
@@ -35,8 +39,14 @@ namespace Shooter
         {
             Animation.Position = Position;
             Animation.Update(gameTime);
+            CheckActive();
         }
 
+        public void CheckActive()
+        {
+            if (Health <= 0 || Position.X < -Width)
+                Active = false;
+        }
         // Get the width of the player ship
         public int Width
         {

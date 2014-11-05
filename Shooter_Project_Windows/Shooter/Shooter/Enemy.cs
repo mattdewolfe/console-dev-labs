@@ -17,7 +17,6 @@ namespace Shooter
         {
             // Load the enemy ship texture
             Animation = _animation;
-
             // Set the position of the enemy
             Position = _position;
             // Set the amount of damage the enemy can do
@@ -28,23 +27,22 @@ namespace Shooter
             Value = 100;
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime _gameTime)
         {
             // The enemy always moves to the left so decrement x
             Position.X -= EnemyMoveSpeed;
-
-            // Update the position of the Animation
-            Animation.Position = Position;
-
-            // Update Animation
-            Animation.Update(gameTime);
-
-            // If the enemy is past the screen or its health reaches 0, deactivate
-            if (Position.X < -Width || Health <= 0)
-            {
-                // By setting the Active flag to false, the game will remove
-                Active = false;
-            }
+            base.Update(_gameTime);
         }
+
+        public override void OnHit(Entity _ent)
+        {
+            base.OnHit(_ent);
+        }
+        public override void OnHit(Projectile _proj)
+        {
+            base.OnHit(_proj);
+        }
+
+        
     }
 }

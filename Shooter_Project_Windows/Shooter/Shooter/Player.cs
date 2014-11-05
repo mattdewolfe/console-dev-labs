@@ -7,6 +7,10 @@ namespace Shooter
 {
     class Player : Entity
     {
+        public Player()
+        {
+            
+        }
         // Initialize the player
         public void Initialize(Animation _animation, Vector2 _position)
         {

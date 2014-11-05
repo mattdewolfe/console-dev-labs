@@ -435,11 +435,11 @@ namespace Shooter
                 {
                     // Subtract the health from the player based on
                     // the enemy damage
-                    player.Health -= enemies[i].Damage;
+                    player.OnHit(enemies[i]);
 
                     // Since the enemy collided with the player
                     // destroy it
-                    enemies[i].Health = 0;
+                    enemies[i].OnHit(player);
 
                     // If the player health is less than zero we died
                     if (player.Health <= 0)
@@ -465,7 +465,7 @@ namespace Shooter
                     // Determine if the two objects collided with each other
                     if (rectangle1.Intersects(rectangle2))
                     {
-                        enemies[j].Health -= projectiles[i].Damage;
+                        enemies[j].OnHit(projectiles[i]);
                         projectiles[i].Active = false;
                     }
                 }
