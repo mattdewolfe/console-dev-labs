@@ -45,6 +45,10 @@ namespace Shooter
         Texture2D enemyTexture;
         List<Enemy> enemies;
 
+        // Powerups
+        List<Powerup> powerups;
+        List<Animation> powerupAnimations;
+
         // The rate at which the enemies appear
         TimeSpan enemySpawnTime;
         TimeSpan previousSpawnTime;
@@ -66,10 +70,8 @@ namespace Shooter
         // The sound that is played when a laser is fired
         SoundEffect laserSound;
 
-
         // The sound used when the player or an enemy dies
         SoundEffect explosionSound;
-
 
         // The music played during gameplay
         Song gameplayMusic;
@@ -118,6 +120,8 @@ namespace Shooter
             random = new Random();
 
             projectiles = new List<Projectile>();
+            powerups = new List<Powerup>();
+            powerupAnimations = new List<Animation>();
 
             // Set the laser to fire every quarter second
             fireTime = TimeSpan.FromSeconds(.15f);
@@ -144,8 +148,7 @@ namespace Shooter
             Animation playerAnimation = new Animation();
             Texture2D playerTexture = Content.Load<Texture2D>("shipAnimation");
             playerAnimation.Initialize(playerTexture, Vector2.Zero, 115, 69, 8, 30, Color.White, 1f, true);
-
-
+            
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y
             + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
             player.Initialize(playerAnimation, playerPosition);
@@ -162,10 +165,13 @@ namespace Shooter
 
             explosionTexture = Content.Load<Texture2D>("explosion");
 
+            // Initialize powerup animations
+            InitPowerUp("shieldAnimation");
+            InitPowerUp("gunPowerAnimation");
+
             // Load the music
             gameplayMusic = Content.Load<Song>("sound/gameMusic");
-
-
+            
             // Load the laser and explosion sound effect
             laserSound = Content.Load<SoundEffect>("sound/laserFire");
             explosionSound = Content.Load<SoundEffect>("sound/explosion");
@@ -173,10 +179,18 @@ namespace Shooter
             // Load the score font
             font = Content.Load<SpriteFont>("gameFont");
 
-
             // Start the music right away
             PlayMusic(gameplayMusic);
 
+        }
+        // Initialize a powerup animations using the filename
+        // animation is then pushed into array
+        private void InitPowerUp(string _fileName)
+        {
+            Animation powerUp = new Animation();
+            Texture2D powerUpText = Content.Load<Texture2D>(_fileName);
+            powerUp.Initialize(powerUpText, Vector2.Zero, 64, 64, 2, 120, Color.White, 1f, true);
+            powerupAnimations.Add(powerUp);
         }
 
         private void PlayMusic(Song song)
@@ -200,6 +214,34 @@ namespace Shooter
             Animation explosion = new Animation();
             explosion.Initialize(explosionTexture, position, 134, 134, 12, 45, Color.White, 1f, false);
             explosions.Add(explosion);
+        }
+
+        private void AddPowerUp()
+        {
+            // Create a temporary powerup
+            Powerup tempPow;
+            // Randomly decide what type of powerup this will be
+            int type = random.Next(2);
+            // Create starting position at edge of screen
+            Vector2 position = new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height/2);
+            // Initialize temp power up and add it to powerup list
+            tempPow = new Powerup((POWERUP_TYPE)type);
+            tempPow.Initialize(powerupAnimations[type], position);
+            powerups.Add(tempPow);
+        }
+
+        private void UpdatePowerUps(GameTime gameTime)
+        {
+            // Update the Enemies
+            for (int i = powerups.Count - 1; i >= 0; i--)
+            {
+                powerups[i].Update(gameTime);
+
+               /* if (powerups[i].Active == false)
+                {
+                    powerups.RemoveAt(i);
+                }*/
+            }
         }
 
         private void AddEnemy()
@@ -252,8 +294,11 @@ namespace Shooter
 
                         //Add to the player's score
                         score += enemies[i].Value;
+                        if (score % 500 == 0)
+                        {
+                            AddPowerUp();
+                        }
                     }
-
                     enemies.RemoveAt(i);
                 }
             }
@@ -276,6 +321,8 @@ namespace Shooter
             Projectile projectile = new Projectile();
             projectile.Initialize(GraphicsDevice.Viewport, projectileTexture, position);
             projectiles.Add(projectile);
+
+            AddPowerUp();
         }
 
         private void UpdateProjectiles()
@@ -291,7 +338,6 @@ namespace Shooter
                 }
             }
         }
-
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -331,6 +377,9 @@ namespace Shooter
             // Update the enemies
             UpdateEnemies(gameTime);
 
+            // Update all powerups
+            UpdatePowerUps(gameTime);
+
             // Update the collision
             UpdateCollision();
 
@@ -339,7 +388,6 @@ namespace Shooter
 
             // Update the explosions
             UpdateExplosions(gameTime);
-
 
             base.Update(gameTime);
         }
@@ -472,7 +520,6 @@ namespace Shooter
             }
         }
 
-
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -497,6 +544,12 @@ namespace Shooter
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].Draw(spriteBatch);
+            }
+
+            // Draw the powerups
+            for (int i = 0; i < powerups.Count; i++)
+            {
+                powerups[i].Draw(spriteBatch);
             }
 
             // Draw the Projectiles

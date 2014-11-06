@@ -4,31 +4,32 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Shooter
 {
-    class Entity
+    public enum ENTITY_TYPE
+    {
+        ENEMY = 0,
+        PLAYER,
+        PICKUP
+    };
+    abstract class Entity
     {
         // Animation representing the player
         public Animation Animation;
         // Position of the Player relative to the upper left side of the screen
         public Vector2 Position;
-        // State of the player
-        public bool Active;
         // Amount of hit points that player has
         public int Health;
         // How much damage weapons do
         public int Damage;
+        // State of the player
+        public bool Active;
+        // What type of entity is this
+        private ENTITY_TYPE type;
 
-        public Entity() { }
-
-        public virtual void Init(Animation _animation, Vector2 _position) { }
-        public virtual void OnHit(Entity _ent) 
-        {
-            Health -= _ent.Damage;
-        }
-        public virtual void OnHit(Projectile _proj) 
-        {
-            Health -= _proj.Damage;
-        }
-
+        public Entity(ENTITY_TYPE _type) { type = _type; }
+        public abstract void Initialize(Animation _animation, Vector2 _position);
+        public abstract void OnHit(Entity _ent);
+        public abstract void OnHit(Projectile _proj);
+        
         public void Draw(SpriteBatch _spriteSheet)
         {
             Animation.Draw(_spriteSheet);
@@ -45,7 +46,9 @@ namespace Shooter
         public void CheckActive()
         {
             if (Health <= 0 || Position.X < -Width)
+            {
                 Active = false;
+            }
         }
         // Get the width of the player ship
         public int Width
@@ -58,5 +61,8 @@ namespace Shooter
         {
             get { return Animation.FrameHeight; }
         }
+
+        // Get the entity type
+        public ENTITY_TYPE GetEntityType() { return type; }
     }
 }

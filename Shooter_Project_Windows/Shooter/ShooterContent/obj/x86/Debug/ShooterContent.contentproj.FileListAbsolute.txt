@@ -1,1 +1,2 @@
 C:\Users\mdewolfe\Desktop\Shooter\Shooter\ShooterContent\obj\x86\Debug\ShooterContent.contentprojResolveAssemblyReference.cache
+H:\console-dev-labs\Shooter_Project_Windows\Shooter\ShooterContent\obj\x86\Debug\ShooterContent.contentprojResolveAssemblyReference.cache
